@@ -33,30 +33,33 @@ const createSendTokenForGoogle = (user, statusCode, res) => {
 const createSendToken = (user, statusCode, res) => {
   const token = signToken(user._id);
 
+  // Extract domain from frontend URL (remove protocol, paths, ports)
+  const getDomain = (url) => {
+    if (!url) return undefined;
+    const domain = url
+      .replace(/^(https?:\/\/)/, "") // Remove protocol
+      .replace(/:\d+$/, "") // Remove port
+      .split("/")[0]; // Remove paths
+    return domain.startsWith("localhost") ? undefined : `.${domain}`;
+  };
+
   const cookieOptions = {
     expires: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
-    httpOnly: true, // Recommended for security
+    httpOnly: true,
     sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
     secure: process.env.NODE_ENV === "production",
-    domain:
-      process.env.NODE_ENV === "production"
-        ? process.env.frontend_url
-        : undefined,
+    domain: getDomain(process.env.frontend_url), // Now properly formatted
   };
 
   res.cookie("jwt", token, cookieOptions);
 
-  // Remove password from output
   user.password = undefined;
-
   res.status(statusCode).json({
     status: "success",
     token,
-    data: {
-      user,
-    },
+    data: { user },
   });
 };
 
