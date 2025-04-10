@@ -42,7 +42,7 @@ const createSendToken = (user, statusCode, res) => {
     secure: process.env.NODE_ENV === "production",
     domain:
       process.env.NODE_ENV === "production"
-        ? "https://naitik-assignment.onrender.com"
+        ? process.env.frontend_url
         : undefined,
   };
 
