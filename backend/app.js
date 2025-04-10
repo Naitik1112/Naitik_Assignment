@@ -56,7 +56,8 @@ app.use(
 app.use(
   cors({
     origin: [process.env.frontend_url, process.env.backend_url], // Allow multiple origins
-    credentials: true, // Allow credentials (cookies, authorization headers)
+    credentials: true, // Allow credentials (cookies, authorization headers),
+    methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
 
