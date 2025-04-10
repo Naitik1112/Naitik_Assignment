@@ -38,8 +38,8 @@ const createSendToken = (user, statusCode, res) => {
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
     httpOnly: true,
-    sameSite: "Lax", // Change 'None' to 'Lax'
-    secure: false, // False for HTTP (localhost)
+    sameSite: "None", // Change 'None' to 'Lax'
+    secure: true, // False for HTTP (localhost)
   };
 
   if (process.env.NODE_ENV === "production") {
