@@ -55,7 +55,7 @@ app.use(
 // CORS configuration
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://localhost:5000"], // Allow multiple origins
+    origin: [process.env.frontend_url, process.env.backend_url], // Allow multiple origins
     credentials: true, // Allow credentials (cookies, authorization headers)
   })
 );
