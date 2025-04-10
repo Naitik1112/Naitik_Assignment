@@ -50,10 +50,15 @@ const createSendToken = (user, statusCode, res) => {
     httpOnly: true,
     sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
     secure: process.env.NODE_ENV === "production",
-    domain: getDomain(process.env.frontend_url), // Now properly formatted
+    // Render.com specific domain handling
+    domain:
+      process.env.NODE_ENV === "production"
+        ? ".onrender.com" // Critical: Leading dot for all *.onrender.com subdomains
+        : undefined, // Local development
   };
 
   res.cookie("jwt", token, cookieOptions);
+  console.log("Cookie Headers Sent:", res.getHeaders()["set-cookie"]);
 
   user.password = undefined;
   res.status(statusCode).json({
