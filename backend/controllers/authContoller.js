@@ -41,7 +41,9 @@ const createSendToken = (user, statusCode, res) => {
     sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
     secure: process.env.NODE_ENV === "production",
     domain:
-      process.env.NODE_ENV === "production" ? ".yourdomain.com" : undefined,
+      process.env.NODE_ENV === "production"
+        ? "https://naitik-assignment.onrender.com"
+        : undefined,
   };
 
   res.cookie("jwt", token, cookieOptions);
