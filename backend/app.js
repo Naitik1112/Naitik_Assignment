@@ -24,6 +24,7 @@ const app = express();
 
 // Serve static files
 app.use(express.static(path.join(__dirname, "../frontend/public")));
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
 // app.use(favicon(path.join(__dirname, "../client/public/favicon.ico")));
 
 // Passport configuration
@@ -114,6 +115,10 @@ app.use("/api/v1/drone", droneRouter);
 // 404 Handler
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+});
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
 });
 
 // Global error handler
