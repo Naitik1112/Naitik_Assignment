@@ -23,7 +23,6 @@ const createSendTokenForGoogle = (user, statusCode, res) => {
   };
   cookieOptions.secure = true;
 
-  
   console.log(token);
   console.log(cookieOptions);
   res.cookie("jwt", token, cookieOptions);
@@ -52,6 +51,8 @@ const createSendToken = (user, statusCode, res) => {
   // } else {
   //   cookieOptions.secure = false; // Allow in localhost (HTTP)
   // }
+  console.log(token);
+  console.log(cookieOptions);
 
   res.cookie("jwt", token, cookieOptions);
 
