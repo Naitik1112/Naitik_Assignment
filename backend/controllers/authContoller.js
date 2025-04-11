@@ -19,10 +19,11 @@ const createSendTokenForGoogle = (user, statusCode, res) => {
     expires: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
-    httpOnly: false,
+    httpOnly: true,
   };
   if (process.env.NODE_ENV === "production") cookieOptions.secure = true;
-
+  cookieOptions.secure = true;
+  cookieOptions.domain = `.${process.env.frontend_url}`;
   res.cookie("jwt", token, cookieOptions);
 
   // Remove password from output
@@ -43,6 +44,7 @@ const createSendToken = (user, statusCode, res) => {
   };
 
   cookieOptions.secure = true;
+  cookieOptions.domain = `.${process.env.frontend_url}`;
 
   // if (process.env.NODE_ENV === "production") {
   //   cookieOptions.secure = true; // Secure in production (HTTPS)
