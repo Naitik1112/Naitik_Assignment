@@ -27,6 +27,8 @@ function Login() {
       const data = await response.json();
       console.log(data)
       const token = data.token;
+      //console.log(localStorage.getItem('token'));
+
       localStorage.setItem('token', token);
       if (!response.ok) {
         throw new Error(data.message || "Login failed");

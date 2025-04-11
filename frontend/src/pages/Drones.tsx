@@ -24,7 +24,11 @@ function Drones() {
       try {
         const response = await axios.get(
           `${import.meta.env.VITE_BACKEND_URL}/api/v1/drone/user`,
-          { withCredentials: true }
+          { withCredentials: true ,
+            headers: {
+              'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+          }
         );
         
         const formattedDrones = response.data.data.drones.map((drone: any) => ({
@@ -56,7 +60,11 @@ function Drones() {
       const response = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/api/v1/drone/user`,
         newDrone,
-        { withCredentials: true }
+        { withCredentials: true ,
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        }
       );
 
       alert("Drone added successfully!");
@@ -81,7 +89,10 @@ function Drones() {
           maxSpeed: selectedDrone.maxSpeed,
           maxAltitude: selectedDrone.maxAltitude
         },
-        { withCredentials: true }
+        { withCredentials: true ,
+          headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }}
       );
 
       setDrones(drones.map(d => d.id === selectedDrone.id ? selectedDrone : d));
@@ -101,7 +112,11 @@ function Drones() {
     try {
       await axios.delete(
         `${import.meta.env.VITE_BACKEND_URL}/api/v1/drone/${droneId}`,
-        { withCredentials: true }
+        { withCredentials: true ,
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        }
       );
 
       setDrones(drones.filter(d => d.id !== droneId));

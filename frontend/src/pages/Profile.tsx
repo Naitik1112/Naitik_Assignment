@@ -22,7 +22,11 @@ function Profile() {
         // Fetch user details
         const userResponse = await axios.get(
           `${import.meta.env.VITE_BACKEND_URL}/api/v1/users/getme`,
-          { withCredentials: true }
+          { withCredentials: true ,
+            headers: {
+              'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+          }
         );
         
         // Extract user data from nested response
@@ -40,14 +44,22 @@ function Profile() {
         // Fetch missions count
         const missionsResponse = await axios.get(
           `${import.meta.env.VITE_BACKEND_URL}/api/v1/mission/user`,
-          { withCredentials: true }
+          { withCredentials: true ,
+            headers: {
+              'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+          }
         );
         setTotalMissions(missionsResponse.data.data.missions.length);
 
         // Fetch drones count
         const dronesResponse = await axios.get(
           `${import.meta.env.VITE_BACKEND_URL}/api/v1/drone/user`,
-          { withCredentials: true }
+          { withCredentials: true ,
+            headers: {
+              'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+          }
         );
         setTotalDrones(dronesResponse.data.data.drones.length);
       } catch (error) {
@@ -74,7 +86,11 @@ function Profile() {
       const response = await axios.patch(
         `${import.meta.env.VITE_BACKEND_URL}/api/v1/users/updateMe`,
         editForm,
-        { withCredentials: true }
+        { withCredentials: true ,
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        }
       );
 
       // Update user data from nested response

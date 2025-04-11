@@ -91,6 +91,9 @@ function Missions() {
       const response = await axios.get(
         `${import.meta.env.VITE_BACKEND_URL}/api/v1/mission/${mission.id}`, {
           withCredentials: true, // 🟢 This is KEY!
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
         }
       );
       
@@ -195,7 +198,11 @@ function Missions() {
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_BACKEND_URL}/api/v1/mission/${selectedMission.id}/${selectedDrone}`,
-        { withCredentials: true }
+        { withCredentials: true ,
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        }
       );
   
       const data = response.data;
@@ -262,7 +269,11 @@ function Missions() {
       const response = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/api/v1/mission/user/`,
         payload,
-        { withCredentials: true } // to send JWT cookie
+        { withCredentials: true ,
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        } // to send JWT cookie
       );
   
       console.log("Mission created:", response.data);
@@ -292,7 +303,11 @@ function Missions() {
       const response = await axios.patch(
         `${import.meta.env.VITE_BACKEND_URL}/api/v1/mission/${selectedMission._id}`,
         newMission,
-        { withCredentials: true }
+        { withCredentials: true ,
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        }
       );
       alert("Mission updated successfully!");
       setIsEditMissionModalOpen(false); // Close the modal after submission
@@ -312,7 +327,11 @@ function Missions() {
     try {
       const response = await axios.delete(
         `${import.meta.env.VITE_BACKEND_URL}/api/v1/mission/${missionId}`,
-        { withCredentials: true }
+        { withCredentials: true ,
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        }
       );
       alert("Mission deleted successfully!");
       setMissions(prev => prev.filter(mission => mission.id !== missionId));

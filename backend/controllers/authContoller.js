@@ -31,6 +31,14 @@ const createSendTokenForGoogle = (user, statusCode, res) => {
   // Remove password from output
   console.log("this is signup");
   user.password = undefined;
+
+  res.status(statusCode).json({
+    status: "success",
+    token,
+    data: {
+      user,
+    },
+  });
 };
 
 const createSendToken = (user, statusCode, res) => {
@@ -58,7 +66,6 @@ const createSendToken = (user, statusCode, res) => {
 
   res.cookie("jwt", token, cookieOptions);
   res.cookie("X", "Y");
-
 
   // Remove password from output
   user.password = undefined;
@@ -92,9 +99,9 @@ exports.googleCallback = catchAsync(async (req, res, next) => {
   createSendTokenForGoogle(user, 200, res);
 
   // Redirect user to the desired page after login
-  console.log("sjsj");
-  // res.redirect("http://localhost:5173/");
-  res.redirect(`${process.env.frontend_url}`); // or any page you want the user to be redirected to after login
+  // console.log("sjsj");
+  // // res.redirect("http://localhost:5173/");
+  // res.redirect(`${process.env.frontend_url}`); // or any page you want the user to be redirected to after login
 });
 
 exports.signup = catchAsync(async (req, res, next) => {
