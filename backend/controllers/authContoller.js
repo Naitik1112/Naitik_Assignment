@@ -22,8 +22,7 @@ const createSendTokenForGoogle = (user, statusCode, res) => {
     httpOnly: true,
   };
   if (process.env.NODE_ENV === "production") cookieOptions.secure = true;
-  cookieOptions.secure = true;
-  cookieOptions.domain = `.${process.env.frontend_url}`;
+
   res.cookie("jwt", token, cookieOptions);
 
   // Remove password from output
@@ -44,7 +43,6 @@ const createSendToken = (user, statusCode, res) => {
   };
 
   cookieOptions.secure = true;
-  cookieOptions.domain = "drone-project-ue0g.onrender.com";
 
   // if (process.env.NODE_ENV === "production") {
   //   cookieOptions.secure = true; // Secure in production (HTTPS)
