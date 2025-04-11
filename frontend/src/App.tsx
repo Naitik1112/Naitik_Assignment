@@ -8,6 +8,7 @@ import Missions from './pages/Missions';
 import Drones from './pages/Drones';
 import ProtectedRoute from './pages/ProtectedRoute';
 import { AuthProvider } from './pages/AuthContext';
+import TokenHandler from './pages/TokenHandler';
 
 function App() {
   return (
@@ -41,6 +42,9 @@ function App() {
                 <ProtectedRoute>
                   <Profile />
                 </ProtectedRoute>
+              } />
+              <Route path="/:token" element={
+                  <TokenHandler />
               } />
             </Routes>
           </main>

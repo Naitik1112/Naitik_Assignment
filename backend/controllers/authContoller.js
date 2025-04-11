@@ -32,13 +32,15 @@ const createSendTokenForGoogle = (user, statusCode, res) => {
   console.log("this is signup");
   user.password = undefined;
 
-  res.status(statusCode).json({
-    status: "success",
-    token,
-    data: {
-      user,
-    },
-  });
+  res.redirect(`${process.env.frontend_url}/${token}`);
+
+  // res.status(statusCode).json({
+  //   status: "success",
+  //   token,
+  //   data: {
+  //     user,
+  //   },
+  // });
 };
 
 const createSendToken = (user, statusCode, res) => {
