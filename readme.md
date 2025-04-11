@@ -31,7 +31,7 @@ A full-stack MERN application for managing drones, creating missions, validating
 
 ## 🚀 Getting Started
 
-### 🔧 Backend Setup
+### 🔧 Project Setup
 
 ```bash
 cd backend
