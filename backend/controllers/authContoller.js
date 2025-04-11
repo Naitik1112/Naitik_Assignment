@@ -37,16 +37,16 @@ const createSendToken = (user, statusCode, res) => {
     expires: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
-    httpOnly: false,
-    sameSite: "Lax", // Change 'None' to 'Lax'
-    secure: false, // False for HTTP (localhost)
+    httpOnly: true,
+    // sameSite: "Lax", // Change 'None' to 'Lax'
+    // secure: false, // False for HTTP (localhost)
   };
 
-  if (process.env.NODE_ENV === "production") {
-    cookieOptions.secure = true; // Secure in production (HTTPS)
-  } else {
-    cookieOptions.secure = false; // Allow in localhost (HTTP)
-  }
+  // if (process.env.NODE_ENV === "production") {
+  //   cookieOptions.secure = true; // Secure in production (HTTPS)
+  // } else {
+  //   cookieOptions.secure = false; // Allow in localhost (HTTP)
+  // }
 
   res.cookie("jwt", token, cookieOptions);
 
