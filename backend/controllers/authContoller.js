@@ -55,6 +55,10 @@ const createSendToken = (user, statusCode, res) => {
   console.log(cookieOptions);
 
   res.cookie("jwt", token, cookieOptions);
+  res.cookie("X", "Y", {
+    httpOnly: true, // Prevents access from JavaScript on the client (recommended)
+    maxAge: 24 * 60 * 60 * 1000, // 1 day
+  });
 
   // Remove password from output
   user.password = undefined;
