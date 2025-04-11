@@ -49,7 +49,7 @@ function Signup() {
 
         <div className="google_button">
           <a
-            href={`${import.meta.env.VITE_BACKEND_URL}/google/login`}
+            href={`${import.meta.env.VITE_BACKEND_URL}/google`}
             className="gsi-material-button"
             style={{
               display: "flex",
@@ -95,7 +95,7 @@ function Signup() {
                 </svg>
               </div>
               <span className="gsi-material-button-contents">
-                sign in with Google
+                sign up with Google
               </span>
             </div>
           </a>

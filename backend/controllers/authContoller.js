@@ -82,7 +82,9 @@ exports.googleCallback = catchAsync(async (req, res, next) => {
   createSendTokenForGoogle(user, 200, res);
 
   // Redirect user to the desired page after login
-  res.redirect(`${process.env.frontend_url}`); // or any page you want the user to be redirected to after login
+  console.log("sjsj");
+  res.redirect("http://localhost:5173/");
+  // res.redirect(`${process.env.frontend_url}`); // or any page you want the user to be redirected to after login
 });
 
 exports.signup = catchAsync(async (req, res, next) => {
