@@ -21,8 +21,11 @@ const createSendTokenForGoogle = (user, statusCode, res) => {
     ),
     httpOnly: true,
   };
-  if (process.env.NODE_ENV === "production") cookieOptions.secure = true;
+  cookieOptions.secure = true;
 
+  
+  console.log(token);
+  console.log(cookieOptions);
   res.cookie("jwt", token, cookieOptions);
 
   // Remove password from output
