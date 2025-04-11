@@ -57,8 +57,13 @@ app.use(
 // CORS configuration
 app.use(
   cors({
-    origin: [process.env.frontend_url, process.env.backend_url], // Allow multiple origins
-    credentials: true, // Allow credentials (cookies, authorization headers)
+    origin: [
+      process.env.frontend_url,
+      process.env.backend_url,
+      "https://drone-project-ue0g.onrender.com",
+    ],
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true,
   })
 );
 
