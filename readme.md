@@ -37,16 +37,11 @@ A full-stack MERN application for managing drones, creating missions, validating
 cd backend
 npm install
 npm start
+```
 
+```bash
 cd frontend
 npm install
 npm run dev
-```
-
-cd frontend
-npm install
-npm run dev
-
-```
 
 ```
