@@ -28,7 +28,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
           status: string;
           data: { data: User };
         }>(`${import.meta.env.VITE_BACKEND_URL}/api/v1/users/getme`, {
-          withCredentials: true,
+          withCredentials: true, 
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
         });
         setUser(response.data.data.data);
       } catch (error) {

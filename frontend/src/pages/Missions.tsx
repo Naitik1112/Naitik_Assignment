@@ -17,7 +17,10 @@ function Missions() {
       try {
         const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/mission/user/`, {
           method: "GET",
-          credentials: "include", // 🟢 This is KEY!
+          credentials: "include", // 🟢 This is KEY!, 
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
         });
         const data = await res.json();
 
@@ -61,6 +64,9 @@ function Missions() {
         const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/drone/user`, {
           method: "GET",
           credentials: "include", 
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
         });
         const res = await response.json();
         console.log(res)
