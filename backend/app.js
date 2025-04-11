@@ -22,6 +22,8 @@ const globalErrorHandler = require("./controllers/errorController");
 
 const app = express();
 
+app.set("trust proxy", true);
+
 // Serve static files
 app.use(express.static(path.join(__dirname, "../frontend/public")));
 app.use(express.static(path.join(__dirname, "../frontend/dist")));
