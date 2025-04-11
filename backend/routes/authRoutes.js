@@ -26,7 +26,9 @@ router.get(
 router.get(
   "/google/callback",
   authController.confirm,
-  passport.authenticate("google-signup", { failureRedirect: "/signin" }),
+  passport.authenticate("google-signup", {
+    failureRedirect: `${process.env.backend_url}/signin`,
+  }),
   authController.confirm,
   authController.googleCallback
 );
@@ -35,7 +37,7 @@ router.get(
 router.get(
   "/google/login/callback",
   passport.authenticate("google-login", {
-    failureRedirect: "/login",
+    failureRedirect: `${process.env.frontend_url}/login`,
     failureMessage: true,
   }),
   authController.googleCallback
