@@ -17,8 +17,13 @@ const Navbar: React.FC = () => {
         // This endpoint should verify the JWT cookie
         await axios.get(
           `${import.meta.env.VITE_BACKEND_URL}/api/v1/users/getme`,
-          { withCredentials: true }
+          { withCredentials: true ,
+            headers: {
+              'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+          }
         );
+        console.log(localStorage.getItem('token'))
         setIsLoggedIn(true);
       } catch (error) {
         setIsLoggedIn(false);
@@ -39,8 +44,13 @@ const Navbar: React.FC = () => {
     try {
       await axios.get(
         `${import.meta.env.VITE_BACKEND_URL}/api/v1/users/logout`,
-        { withCredentials: true }
+        { withCredentials: true  ,
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        }
       );
+      console.log(localStorage.getItem('token'))
       setIsLoggedIn(false);
       navigate('/login');
     } catch (error) {
