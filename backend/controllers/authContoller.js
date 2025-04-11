@@ -44,7 +44,7 @@ const createSendToken = (user, statusCode, res) => {
   };
 
   cookieOptions.secure = true;
-  cookieOptions.domain = ".drone-project-ue0g.onrender.com/";
+  cookieOptions.domain = "drone-project-ue0g.onrender.com";
 
   // if (process.env.NODE_ENV === "production") {
   //   cookieOptions.secure = true; // Secure in production (HTTPS)
