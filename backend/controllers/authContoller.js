@@ -96,7 +96,7 @@ exports.googleCallback = catchAsync(async (req, res, next) => {
   console.log("this is signup");
 
   // Generate JWT and store it in the cookie
-  createSendTokenForGoogle(user, 200, res);
+  createSendTokenForGoogle(user, 201, res);
 
   // Redirect user to the desired page after login
   // console.log("sjsj");

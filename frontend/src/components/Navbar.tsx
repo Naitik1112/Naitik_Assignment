@@ -50,7 +50,7 @@ const Navbar: React.FC = () => {
           }
         }
       );
-      console.log(localStorage.getItem('token'))
+      localStorage.removeItem('token');
       setIsLoggedIn(false);
       navigate('/login');
     } catch (error) {

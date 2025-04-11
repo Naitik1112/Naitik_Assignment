@@ -43,6 +43,35 @@ function Login() {
       alert(`Login error: ${error.message}`);
     }
   };
+
+  const handleGoogleLogin = () => {
+    // Open Google auth in a new window
+    const authWindow = window.open(
+      `${import.meta.env.VITE_BACKEND_URL}/google/login`,
+      '_blank',
+      'width=500,height=600'
+    );
+  
+    // Check for popup blocker
+    if (!authWindow) {
+      alert('Please allow popups for Google login');
+      return;
+    }
+  
+    // Listen for messages from the auth window
+    const handleMessage = (event: MessageEvent) => {
+      // Verify the origin for security
+      if (event.origin !== import.meta.env.VITE_BACKEND_URL) return;
+  
+      if (event.data.token) {
+        localStorage.setItem('token', event.data.token);
+        navigate('/');
+        window.removeEventListener('message', handleMessage);
+      }
+    };
+  
+    window.addEventListener('message', handleMessage);
+  };
   
 
   return (
@@ -55,8 +84,8 @@ function Login() {
         </div>
 
         <div className="google_button">
-          <a
-            href={`${import.meta.env.VITE_BACKEND_URL}/google/login`}
+          <button
+            onClick={handleGoogleLogin}
             className="gsi-material-button"
             style={{
               display: "flex",
@@ -105,7 +134,7 @@ function Login() {
                 Log in with Google
               </span>
             </div>
-          </a>
+          </button>
         </div>
 
         <div className="or">or</div>
