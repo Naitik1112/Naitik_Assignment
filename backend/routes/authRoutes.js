@@ -27,7 +27,7 @@ router.get(
   "/google/callback",
   authController.confirm,
   passport.authenticate("google-signup", {
-    failureRedirect: `${process.env.backend_url}/signin`,
+    failureRedirect: `${process.env.frontend_url}/signin`,
   }),
   authController.confirm,
   authController.googleCallback
