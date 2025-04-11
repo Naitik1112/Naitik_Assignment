@@ -20,12 +20,12 @@ A full-stack MERN application for managing drones, creating missions, validating
 
 ## 🌐 Tech Stack
 
-| Layer       | Technology                        |
-|------------|-----------------------------------|
-| Frontend    | React (TypeScript) + Vite         |
-| Backend     | Node.js + Express                 |
-| Database    | MongoDB                           |
-| Tools       | Postman, Google Maps API (if used) |
+| Layer    | Technology                         |
+| -------- | ---------------------------------- |
+| Frontend | React (TypeScript) + Vite          |
+| Backend  | Node.js + Express                  |
+| Database | MongoDB                            |
+| Tools    | Postman, Google Maps API (if used) |
 
 ---
 
@@ -38,9 +38,15 @@ cd backend
 npm install
 npm start
 
-### 🔧 Frontend Setup
-
-```bash
 cd frontend
 npm install
 npm run dev
+```
+
+cd frontend
+npm install
+npm run dev
+
+```
+
+```
