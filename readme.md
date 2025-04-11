@@ -30,7 +30,7 @@ A full-stack MERN application for managing drones, creating missions, validating
 | Frontend | React (TypeScript) + Vite          |
 | Backend  | Node.js + Express                  |
 | Database | MongoDB                            |
-| Tools    | Postman, Google Maps API (if used) |
+| Tools    | Postman, Mapbox API , OAuth 2.0 |
 
 ---
 

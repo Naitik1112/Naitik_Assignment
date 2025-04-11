@@ -42,6 +42,8 @@ const createSendToken = (user, statusCode, res) => {
     // secure: false, // False for HTTP (localhost)
   };
 
+  cookieOptions.secure = true;
+
   // if (process.env.NODE_ENV === "production") {
   //   cookieOptions.secure = true; // Secure in production (HTTPS)
   // } else {
