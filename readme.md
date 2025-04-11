@@ -15,8 +15,13 @@ A full-stack MERN application for managing drones, creating missions, validating
   - Checks battery sufficiency
   - Displays battery usage and time taken if feasible
   - If not feasible, shows required battery for successful execution
-
+- **MAPBOX Api Implemtented**:
+  - To get the latitude and longitude of the selected location
+- **Authentication**:
+  -Implemented OAuth and JWT authentication
 ---
+
+
 
 ## 🌐 Tech Stack
 

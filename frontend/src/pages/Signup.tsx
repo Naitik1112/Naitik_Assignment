@@ -95,7 +95,7 @@ function Signup() {
                 </svg>
               </div>
               <span className="gsi-material-button-contents">
-                sign up with Google
+                Sign up with Google
               </span>
             </div>
           </a>

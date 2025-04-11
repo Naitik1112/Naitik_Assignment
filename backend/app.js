@@ -117,7 +117,7 @@ app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
 
-// Global error handler
+// Global error handle
 app.use(globalErrorHandler);
 
 module.exports = app;
