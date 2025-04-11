@@ -20,6 +20,7 @@ const createSendTokenForGoogle = (user, statusCode, res) => {
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
     httpOnly: true,
+    sameSite: "Lax",
   };
   cookieOptions.secure = true;
 
@@ -40,6 +41,7 @@ const createSendToken = (user, statusCode, res) => {
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
     httpOnly: true,
+    sameSite: "Lax",
     // sameSite: "Lax", // Change 'None' to 'Lax'
     // secure: false, // False for HTTP (localhost)
   };
@@ -55,10 +57,10 @@ const createSendToken = (user, statusCode, res) => {
   console.log(cookieOptions);
 
   res.cookie("jwt", token, cookieOptions);
-  res.cookie("X", "Y", {
-    httpOnly: true, // Prevents access from JavaScript on the client (recommended)
-    maxAge: 24 * 60 * 60 * 1000, // 1 day
-  });
+  res.cookie("X", "Y");
+
+  localStorage.setItem("token", token);
+  console.log(localStorage.getItem('token'));
 
   // Remove password from output
   user.password = undefined;
