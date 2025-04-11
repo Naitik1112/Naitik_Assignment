@@ -45,3 +45,37 @@ npm install
 npm run dev
 
 ```
+
+### 🔧 Required ENV for backend
+
+```bash
+NODE_ENV=development # or production
+DATABASE_USER=<your-database-username>
+PORT=5000
+DATABASE=<your-database-name>
+DATABASE_LOCAL=<your-local-database-name>
+DATABASE_PASSWORD=<your-database-password>
+
+JWT_SECRET=<your-jwt-secret>
+JWT_EXPIRES=30d
+JWT_COOKIE_EXPIRES_IN=7
+
+GOOGLE_CLIENT_ID=<your-google-client-id>
+GOOGLE_CLIENT_SECRET=<your-google-client-secret>
+GOOGLE_CALLBACK_URL=<your-google-callback-url>
+GOOGLE_CALLBACK_URL_LOGIN=<your-google-login-callback-url>
+
+SESSION_SECRET=<your-session-secret>
+
+frontend_url=<url-for-frontend>
+backend_url=<url-for-backend>
+```
+
+
+### 🔧 Required ENV for frontend
+
+```bash
+VITE_FRONTEND_URL=<url-for-frontend>
+VITE_BACKEND_URL=<url-for-backend>
+```
+
