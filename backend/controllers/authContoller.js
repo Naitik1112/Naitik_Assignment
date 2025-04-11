@@ -59,8 +59,6 @@ const createSendToken = (user, statusCode, res) => {
   res.cookie("jwt", token, cookieOptions);
   res.cookie("X", "Y");
 
-  localStorage.setItem("token", token);
-  console.log(localStorage.getItem('token'));
 
   // Remove password from output
   user.password = undefined;
